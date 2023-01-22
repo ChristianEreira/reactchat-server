@@ -3,7 +3,7 @@ const io = require('socket.io')(http, {
     transports: ['websocket'],
     allowUpgrades: false,
     cors: {
-        origin: "http://localhost:3000",
+        origin: "*",
         methods: ["GET", "POST"]
     }
 });
@@ -173,7 +173,7 @@ io.on('connection', function (socket) {
 
 let port = process.env.PORT || 8080;
 
-http.listen(port, function () {
+http.listen(port, '0.0.0.0', null, function () {
     console.log(`listening on *:${port}`);
 });
 
